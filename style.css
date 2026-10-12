@@ -1,10 +1,11 @@
 
+
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --burnt-orange: #D5360C;
-    --warm-ivory: #E6D5BD;
-    --soft-black: #101010;
+    --orange: #D5360C;
+    --ivory: #E6D5BD;
+    --black: #101010;
 }
 
 * {
@@ -17,11 +18,52 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 24px;
-    background: var(--soft-black);
-    color: var(--warm-ivory);
+    padding: 30px 16px;
+    overflow-x: hidden;
+    background-color: var(--black);
+    background-image:
+        radial-gradient(var(--orange) 1.5px, transparent 1.5px);
+    background-size: 35px 35px;
+    color: var(--ivory);
     font-family: 'Press Start 2P', monospace;
-    image-rendering: pixelated;
+}
+
+/* Pixel-art mountain scenery */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 145px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    background:
+        linear-gradient(135deg, transparent 40%, var(--orange) 40% 48%, transparent 48%)
+        0 0 / 110px 100px repeat-x;
+    opacity: 0.6;
+}
+
+body::after {
+    height: 35px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--orange) 0 35px,
+        var(--black) 35px 55px,
+        var(--ivory) 55px 65px,
+        var(--black) 65px 90px
+    );
+    opacity: 0.8;
+    clip-path: polygon(
+        0 35%, 10% 35%, 10% 0, 22% 0, 22% 55%,
+        40% 55%, 40% 20%, 55% 20%, 55% 70%,
+        75% 70%, 75% 15%, 88% 15%, 88% 45%,
+        100% 45%, 100% 100%, 0 100%
+    );
 }
 
 .game-card {
@@ -29,44 +71,45 @@ body {
     max-width: 520px;
     padding: 32px 26px;
     text-align: center;
-    background: var(--soft-black);
-    border: 4px solid var(--burnt-orange);
+    background: var(--black);
+    border: 4px solid var(--orange);
     box-shadow: 8px 8px 0 #501708;
+    position: relative;
 }
 
 .eyebrow {
-    color: var(--burnt-orange);
+    color: var(--orange);
     font-size: 10px;
     line-height: 1.8;
     letter-spacing: 2px;
 }
 
 h1 {
+    color: var(--ivory);
     font-size: clamp(16px, 4vw, 24px);
     line-height: 1.8;
     margin: 24px 0;
-    color: var(--warm-ivory);
-    text-shadow: 3px 3px 0 #65200e;
+    text-shadow: 4px 4px 0 #501708;
 }
 
 .subtitle {
     font-size: 9px;
     line-height: 2.2;
-    color: var(--warm-ivory);
+    color: var(--ivory);
     opacity: 0.8;
 }
 
 .attempt-box {
     margin: 28px 0;
     padding: 22px 12px;
-    border: 3px solid var(--burnt-orange);
+    border: 3px solid var(--orange);
     box-shadow: 4px 4px 0 #501708;
 }
 
 #attempts {
     display: block;
     margin-top: 18px;
-    color: var(--burnt-orange);
+    color: var(--orange);
     font-size: 38px;
 }
 
@@ -79,9 +122,9 @@ input {
     display: block;
     width: 100%;
     padding: 18px 12px;
-    background: var(--soft-black);
-    color: var(--warm-ivory);
-    border: 3px solid var(--warm-ivory);
+    background: var(--black);
+    color: var(--ivory);
+    border: 3px solid var(--ivory);
     border-radius: 0;
     outline: none;
     font: 10px 'Press Start 2P', monospace;
@@ -89,22 +132,22 @@ input {
 }
 
 input::placeholder {
-    color: var(--warm-ivory);
+    color: var(--ivory);
     opacity: 0.55;
 }
 
 input:focus {
-    border-color: var(--burnt-orange);
+    border-color: var(--orange);
 }
 
 button {
     width: 100%;
     padding: 18px 10px;
     margin-top: 20px;
-    border: 3px solid var(--burnt-orange);
+    border: 3px solid var(--orange);
     border-radius: 0;
-    background: var(--burnt-orange);
-    color: var(--warm-ivory);
+    background: var(--orange);
+    color: var(--ivory);
     font: 10px 'Press Start 2P', monospace;
     line-height: 1.8;
     cursor: pointer;
@@ -113,8 +156,8 @@ button {
 }
 
 button:hover {
-    background: var(--warm-ivory);
-    color: var(--soft-black);
+    background: var(--ivory);
+    color: var(--black);
 }
 
 button:active {
@@ -131,7 +174,7 @@ button:disabled {
     min-height: 66px;
     margin: 28px 0 16px;
     padding: 15px 8px;
-    border: 2px dashed var(--burnt-orange);
+    border: 2px dashed var(--orange);
     font-size: 9px;
     line-height: 2.2;
     overflow-wrap: anywhere;
@@ -139,14 +182,14 @@ button:disabled {
 
 .restart {
     max-width: 280px;
-    background: var(--soft-black);
-    color: var(--warm-ivory);
+    background: var(--black);
+    color: var(--ivory);
     box-shadow: none;
 }
 
 .restart:hover {
-    background: var(--warm-ivory);
-    color: var(--soft-black);
+    background: var(--ivory);
+    color: var(--black);
 }
 
 @media (max-width: 480px) {
